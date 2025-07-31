@@ -37,6 +37,9 @@ jobs:
       - name: Checking the directories
         run: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "ls -la ~/website/"
 
+      - name: Creating target directory in EC2
+        run: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "sudo mkdir -p /var/www/html/"
+
 
       - name: SSH into EC2 and deploy
         run: | 
