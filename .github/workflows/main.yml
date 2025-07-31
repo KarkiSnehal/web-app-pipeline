@@ -32,7 +32,7 @@ jobs:
             ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "mkdir -p ~/website"
 
       - name: Copy files to EC2
-        run: scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ github.workspace }}/." ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }}:~/website/"
+        run: scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ github.workspace }}/." ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }}:~/website/
 
       - name: Checking the directories
         run: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "ls -la ~/website/"
