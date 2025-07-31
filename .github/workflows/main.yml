@@ -34,6 +34,10 @@ jobs:
       - name: Copy files to EC2
         run: scp -r -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "${{ github.workspace }}" ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }}:~/website/
 
+      - name: Checking the directories
+        run: ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ***@*** "ls -la ~/website/"
+
+
       - name: SSH into EC2
         run: | 
-          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "sudo cp -r ~/website/mywebsite/* /var/www/html/"
+          ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP_ADDRESS }} "sudo cp -r ~/website/* /var/www/html/"
